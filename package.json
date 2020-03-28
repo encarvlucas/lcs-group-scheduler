@@ -4,7 +4,8 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build",
+        "build": "ng build --prod --output-path dist",
+        "deploy": "firebase deploy --only hosting:lcs-group-scheduler",
         "test": "ng test",
         "lint": "ng lint",
         "fix": "ng lint --fix",

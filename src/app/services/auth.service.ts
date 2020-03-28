@@ -29,6 +29,12 @@ export class AuthService {
         );
     }
 
+    async googleSignIn() {
+        const provider = new auth.GoogleAuthProvider();
+        const credentials = await this.afAuth.auth.signInWithPopup(provider);
+        console.log({ test: credentials.user });
+    }
+
     async signOut() {
         await this.afAuth.auth.signOut();
         this.router.navigate(["/"]);

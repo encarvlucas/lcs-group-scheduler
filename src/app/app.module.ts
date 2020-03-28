@@ -5,7 +5,10 @@ import { AppComponent } from "./components/app.component";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatButtonModule } from "@angular/material/button";
+
 import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import * as firebase from "firebase/app";
 import * as firebaseui from "firebaseui";
@@ -24,25 +27,25 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     signInFlow: "popup",
     signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        {
-            scopes: [
-                "public_profile",
-                "email",
-                "user_likes",
-                "user_friends"
-            ],
-            customParameters: {
-                auth_type: "reauthenticate"
-            },
-            provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
-        },
-        firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-        firebase.auth.GithubAuthProvider.PROVIDER_ID,
-        {
-            requireDisplayName: false,
-            provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-        },
-        firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+        // {
+        //     scopes: [
+        //         "public_profile",
+        //         "email",
+        //         "user_likes",
+        //         "user_friends"
+        //     ],
+        //     customParameters: {
+        //         auth_type: "reauthenticate"
+        //     },
+        //     provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
+        // },
+        // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        // firebase.auth.GithubAuthProvider.PROVIDER_ID,
+        // {
+        //     requireDisplayName: false,
+        //     provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
+        // },
+        // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
         firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
     ],
     tosUrl: "<your-tos-link>",
@@ -59,8 +62,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        MatButtonModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
+        AngularFirestoreModule,
         FirebaseUIModule.forRoot(firebaseUiAuthConfig),
         CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory }),
     ],
